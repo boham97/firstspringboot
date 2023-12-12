@@ -37,7 +37,7 @@ jobs:
         working-directory: ${{ env.working-directory }}
 
       - name: Build with Gradle
-        run: ./hello-spring/gradlew init; ./gradlew build
+        run: ./gradlew init; ./gradlew build
         working-directory: ${{ env.working-directory }}
 
       - name: Copy Jar
