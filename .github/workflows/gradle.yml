@@ -29,15 +29,18 @@ jobs:
         with:
           java-version: '11'
           distribution: 'temurin'
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x ./hello-spring/gradlew
       
       - name: Build with Gradle
         run: ./hello-spring/gradlew clean build
         
       - name: Copy Jar
-        run: cp ./build/libs/*.jar ./deploy
+        run: cp ./hello-spring/build/libs/*.jar ./deploy
 
       - name: Make zip file
-        run: zip -r ./hello-spring.zip ./deploy
+        run: zip -r ./hello-spring/hello-spring.zip ./deploy
 
       - name: Awsaccess
         uses: aws-actions/configure-aws-credentials@v1
@@ -46,7 +49,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
       - name: Upload to S3
-        run: aws s3 cp --region ${{ secrets.AWS_REGION }} ./hello-spring.zip s3://${{ secrets.S3_BUCKET_NAME }}/hello-spring.zip
+        run: aws s3 cp --region ${{ secrets.AWS_REGION }} ./hello-spring/hello-spring.zip s3://${{ secrets.S3_BUCKET_NAME }}/hello-spring.zip
 
       - name: Code Deploy
         run: aws deploy create-deployment \
