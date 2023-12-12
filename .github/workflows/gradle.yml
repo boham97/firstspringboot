@@ -19,6 +19,8 @@ permissions:
 jobs:
   deploy-service-1:
     runs-on: ubuntu-latest
+    env:
+      working-directory: ./hello-spring
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -29,9 +31,6 @@ jobs:
         with:
           java-version: '11'
           distribution: 'temurin'
-      
-      - name: Setup Gradle
-        run: cd hello-spring; gradle init
 
       - name: Grant execute permission for gradlew
         run: chmod +x ./hello-spring/gradlew
