@@ -22,6 +22,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+      
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
 
       # 2) JDK 11 버전 설치, 다른 JDK 버전을 사용한다면 수정 필요
       - name: Set up JDK 11
@@ -35,9 +38,6 @@ jobs:
 
       - name: Build with Gradle
         run: ./hello-spring/gradlew clean build
-        with:
-          arguments: build
-          build-root-directory: ./notification
 
       - name: Copy Jar
         run: cp ./hello-spring/build/libs/*.jar ./deploy
