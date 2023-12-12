@@ -29,11 +29,9 @@ jobs:
         with:
           java-version: '11'
           distribution: 'temurin'
-      - name: cd
-        run: cd hello-spring
       
       - name: Build with Gradle
-        run: ./gradlew clean build
+        run: ./hello-spring/gradlew clean build
         
       - name: Copy Jar
         run: cp ./build/libs/*.jar ./deploy
