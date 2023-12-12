@@ -33,16 +33,20 @@ jobs:
           distribution: 'temurin'
 
       - name: Grant execute permission for gradlew
-        run: chmod +x ./hello-spring/gradlew
+        run: chmod +x ./gradlew
+        working-directory: ${{ env.working-directory }}
 
       - name: Build with Gradle
-        run: ./hello-spring/gradlew init; ./hello-spring/gradlew build
+        run: ./hello-spring/gradlew init; ./gradlew build
+        working-directory: ${{ env.working-directory }}
 
       - name: Copy Jar
-        run: cp ./hello-spring/build/libs/*.jar ./deploy
+        run: cp ./build/libs/*.jar ./deploy
+        working-directory: ${{ env.working-directory }}
 
       - name: Make zip file
-        run: zip -r ./hello-spring/hello-spring.zip ./deploy
+        run: zip -r ./hello-spring.zip ./deploy
+        working-directory: ${{ env.working-directory }}
 
       - name: Awsaccess
         uses: aws-actions/configure-aws-credentials@v1
