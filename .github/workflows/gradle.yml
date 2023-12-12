@@ -22,9 +22,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-      
-      - name: Setup Gradle
-        run: cd hello-spring; gradle init
 
       # 2) JDK 11 버전 설치, 다른 JDK 버전을 사용한다면 수정 필요
       - name: Set up JDK 11
@@ -32,12 +29,15 @@ jobs:
         with:
           java-version: '11'
           distribution: 'temurin'
+      
+      - name: Setup Gradle
+        run: cd hello-spring; gradle init
 
       - name: Grant execute permission for gradlew
         run: chmod +x ./hello-spring/gradlew
 
       - name: Build with Gradle
-        run: ./hello-spring/gradlew clean build
+        run: ./hello-spring/gradlew init clean build
 
       - name: Copy Jar
         run: cp ./hello-spring/build/libs/*.jar ./deploy
