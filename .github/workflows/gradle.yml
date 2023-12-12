@@ -55,7 +55,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
       - name: Upload to S3
-        run: aws s3 cp --region ${{ secrets.AWS_REGION }} ./hello-spring/hello-spring.zip s3://${{ secrets.S3_BUCKET_NAME }}/hello-spring.zip
+        run: aws s3 cp --region ${{ secrets.AWS_REGION }} ./hello-spring/hello-spring.zip s3://${{ secrets.S3_BUCKET_NAME }}/cd.zip
 
       - name: Code Deploy
         run: aws deploy create-deployment \
