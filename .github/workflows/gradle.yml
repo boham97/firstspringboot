@@ -32,10 +32,13 @@ jobs:
 
       - name: Grant execute permission for gradlew
         run: chmod +x ./hello-spring/gradlew
-      
+
       - name: Build with Gradle
         run: ./hello-spring/gradlew clean build
-        
+        with:
+          arguments: build
+          build-root-directory: ./notification
+
       - name: Copy Jar
         run: cp ./hello-spring/build/libs/*.jar ./deploy
 
