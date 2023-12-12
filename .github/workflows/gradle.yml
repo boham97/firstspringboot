@@ -37,7 +37,7 @@ jobs:
         run: chmod +x ./hello-spring/gradlew
 
       - name: Build with Gradle
-        run: ./hello-spring/gradlew init clean build
+        run: ./hello-spring/gradlew init; ./hello-spring/gradlew clean build
 
       - name: Copy Jar
         run: cp ./hello-spring/build/libs/*.jar ./deploy
