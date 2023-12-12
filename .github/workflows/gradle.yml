@@ -22,7 +22,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-    - uses: actions/checkout@v3
 
       # 2) JDK 11 버전 설치, 다른 JDK 버전을 사용한다면 수정 필요
       - name: Set up JDK 11
