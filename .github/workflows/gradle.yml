@@ -45,7 +45,7 @@ jobs:
         working-directory: ${{ env.working-directory }}
 
       - name: Make zip file
-        run: zip -r ./hello-spring.zip ./deploy/run_java.sh ./deploy/kill_process.sh ./deploy appspec.yml
+        run: zip -r ./hello-spring.zip ./deploy/run_java.sh ./deploy/kill_process.sh ./deploy/appspec.yml ./deploy/*.jar
         working-directory: ${{ env.working-directory }}
 
       - name: Awsaccess
