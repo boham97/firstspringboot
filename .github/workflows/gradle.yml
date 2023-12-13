@@ -46,7 +46,7 @@ jobs:
 
       - name: Make zip file
         run: 
-          zip -j ./hello-spring.zip ./deploy/run_java.sh ./deploy/kill_process.sh ./deploy/appspec.yml ./deploy/*.jar
+          zip -j ./hello-spring.zip ./deploy/run_java.sh ./deploy/kill_process.sh ./deploy/appspec.yml ./deploy/*.jar ./deploy/Dockerfile
         working-directory: ${{ env.working-directory }}
 
       - name: Awsaccess
