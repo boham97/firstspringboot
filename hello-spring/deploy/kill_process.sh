@@ -1,2 +1,4 @@
 #!/bin/bash
-sudo pkill -f 'java -jar'
+sudo docker stop hello-spring
+sudo docker rm hello-spring
+sudo docker image prune
